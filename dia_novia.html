@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de la Novia</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ff69b4;
+            border-radius: 15px;
+            box-shadow: 0 0 25px #ff69b4;
+            padding: 30px;
+            width: 320px;
+            margin: 100px auto;
+        }
+        h1 {
+            color: #ff4fa3;
+            margin-bottom: 5px;
+        }
+        h2 {
+            color: #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        img {
+            width: 120px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ff4fa3;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        button {
+            background: transparent;
+            color: #ff4fa3;
+            border: 2px solid #ff4fa3;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 0 15px #ff4fa3;
+            transition: transform 0.2s, background 0.3s;
+        }
+        button:hover {
+            background: #ff4fa3;
+            color: white;
+            transform: scale(1.05);
+        }
+        #mensajeFinal {
+            display: none;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #fff;
+        }
+        /* Corazones animados */
+        .heart {
+            position: fixed;
+            color: #ff4fa3;
+            font-size: 20px;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10%); opacity: 1; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feliz Día de la Novia</h1>
+        <h2>1 de Agosto</h2>
+        <img src="https://i.imgur.com/U8lFzMZ.png" alt="Ramo de rosas romántico">
+        <p>En este día especial, quiero que sepas...</p>
+        <p>Eres el amor que ilumina mi vida como el rosa en esta oscuridad.</p>
+        <button onclick="mostrarMensaje()">❤️ Haz clic, mi amor</button>
+        <p id="mensajeFinal">
+            Cada latido de mi corazón lleva tu nombre. Feliz 1 de agosto, mi vida. <br><br>
+            ❤️ Roger y Daiana ❤️
+        </p>
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            document.getElementById("mensajeFinal").style.display = "block";
+        }
+        // Corazones animados
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

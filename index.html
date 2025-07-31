@@ -21,9 +21,9 @@
             border: 2px solid #ff69b4;
             border-radius: 15px;
             box-shadow: 0 0 25px #ff69b4;
-            padding: 30px;
-            width: 320px;
-            margin: 100px auto;
+            padding: 40px 30px;
+            width: 340px;
+            margin: 80px auto;
         }
         h1 {
             color: #ff4fa3;
@@ -32,20 +32,20 @@
         h2 {
             color: #ccc;
             font-size: 16px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
-        /* Botón de audio debajo del texto 1 de Agosto */
+        /* Botón de audio centrado entre h2 y la imagen */
         #btnAudio {
             background: rgba(0, 0, 0, 0.6);
             color: #ff4fa3;
             border: 2px solid #ff4fa3;
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            font-size: 20px;
+            width: 55px;
+            height: 55px;
+            font-size: 24px;
             cursor: pointer;
             box-shadow: 0 0 10px #ff4fa3;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             transition: transform 0.2s, background 0.3s;
         }
         #btnAudio:hover {
@@ -54,7 +54,7 @@
             transform: scale(1.1);
         }
         img {
-            width: 120px;
+            width: 130px;
             border-radius: 50%;
             box-shadow: 0 0 15px #ff4fa3;
             margin-bottom: 20px;
@@ -71,7 +71,6 @@
             font-size: 20px;
             font-weight: bold;
         }
-        /* Animación de latido */
         .latido {
             animation: pulse 2s infinite alternate;
         }
@@ -106,7 +105,6 @@
             font-size: 14px;
             color: #fff;
         }
-        /* Corazones animados */
         .heart {
             position: fixed;
             color: #ff4fa3;
@@ -125,7 +123,7 @@
         <h1>Feliz Día de la Novia</h1>
         <h2>1 de Agosto</h2>
 
-        <!-- Botón de audio justo debajo del texto -->
+        <!-- Botón de audio ahora entre el texto y la imagen -->
         <button id="btnAudio" onclick="toggleAudio()">▶</button>
 
         <!-- Imagen local -->
@@ -145,8 +143,39 @@
         </p>
     </div>
 
-    <!-- Música de fondo -->
     <audio id="musica" loop>
         <source src="musica.mp3" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
-    <
+    </audio>
+
+    <script>
+        function mostrarMensaje() {
+            document.getElementById("mensajeFinal").style.display = "block";
+        }
+
+        const audio = document.getElementById('musica');
+        const btnAudio = document.getElementById('btnAudio');
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                btnAudio.textContent = "⏸";
+            } else {
+                audio.pause();
+                btnAudio.textContent = "▶";
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

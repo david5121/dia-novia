@@ -13,17 +13,20 @@
             text-align: center;
             height: 100vh;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .container {
-            position: relative;
-            z-index: 2;
             background: rgba(0, 0, 0, 0.7);
             border: 2px solid #ff69b4;
             border-radius: 15px;
             box-shadow: 0 0 25px #ff69b4;
-            padding: 40px 30px;
+            padding: 30px;
             width: 340px;
-            margin: 80px auto;
+            max-width: 90%;
+            position: relative;
+            z-index: 2;
         }
         h1 {
             color: #ff4fa3;
@@ -32,9 +35,16 @@
         h2 {
             color: #ccc;
             font-size: 16px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
-        /* Botón de audio centrado entre h2 y la imagen */
+        /* Contenedor de botón e imagen */
+        .media-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0 20px 0;
+        }
+        /* Botón de audio */
         #btnAudio {
             background: rgba(0, 0, 0, 0.6);
             color: #ff4fa3;
@@ -45,7 +55,7 @@
             font-size: 24px;
             cursor: pointer;
             box-shadow: 0 0 10px #ff4fa3;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             transition: transform 0.2s, background 0.3s;
         }
         #btnAudio:hover {
@@ -53,12 +63,13 @@
             color: white;
             transform: scale(1.1);
         }
+        /* Imagen */
         img {
             width: 130px;
             border-radius: 50%;
             box-shadow: 0 0 15px #ff4fa3;
-            margin-bottom: 20px;
         }
+        /* Textos */
         p {
             font-size: 14px;
             margin-bottom: 20px;
@@ -82,7 +93,8 @@
                 text-shadow: 0 0 10px #ff4fa3, 0 0 20px #ff4fa3, 0 0 30px #ff4fa3, 0 0 40px #ff4fa3;
             }
         }
-        button {
+        /* Botón del mensaje */
+        button.mensaje {
             background: transparent;
             color: #ff4fa3;
             border: 2px solid #ff4fa3;
@@ -92,9 +104,9 @@
             font-size: 18px;
             box-shadow: 0 0 15px #ff4fa3;
             transition: transform 0.2s, background 0.3s;
-            margin: 5px;
+            margin-top: 10px;
         }
-        button:hover {
+        button.mensaje:hover {
             background: #ff4fa3;
             color: white;
             transform: scale(1.05);
@@ -105,6 +117,7 @@
             font-size: 14px;
             color: #fff;
         }
+        /* Corazones */
         .heart {
             position: fixed;
             color: #ff4fa3;
@@ -123,11 +136,11 @@
         <h1>Feliz Día de la Novia</h1>
         <h2>1 de Agosto</h2>
 
-        <!-- Botón de audio ahora entre el texto y la imagen -->
-        <button id="btnAudio" onclick="toggleAudio()">▶</button>
-
-        <!-- Imagen local -->
-        <img src="imagen.png" alt="Ramo de rosas romántico">
+        <!-- Botón de audio e imagen juntos -->
+        <div class="media-container">
+            <button id="btnAudio" onclick="toggleAudio()">▶</button>
+            <img src="imagen.png" alt="Ramo de rosas romántico">
+        </div>
 
         <p class="glow grande">En este día especial, quiero que sepas...</p>
         <p class="glow latido">
@@ -135,7 +148,7 @@
             como el rosa en esta oscuridad.
         </p>
 
-        <button onclick="mostrarMensaje()">❤️ Haz clic, mi amor</button>
+        <button class="mensaje" onclick="mostrarMensaje()">❤️ Haz clic, mi amor</button>
 
         <p id="mensajeFinal">
             Cada latido de mi corazón lleva tu nombre. Feliz 1 de agosto, mi vida. <br><br>
@@ -143,6 +156,7 @@
         </p>
     </div>
 
+    <!-- Música local -->
     <audio id="musica" loop>
         <source src="musica.mp3" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.

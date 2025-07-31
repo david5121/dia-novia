@@ -32,7 +32,26 @@
         h2 {
             color: #ccc;
             font-size: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+        }
+        /* Botón de audio debajo del texto 1 de Agosto */
+        #btnAudio {
+            background: rgba(0, 0, 0, 0.6);
+            color: #ff4fa3;
+            border: 2px solid #ff4fa3;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 10px #ff4fa3;
+            margin-bottom: 15px;
+            transition: transform 0.2s, background 0.3s;
+        }
+        #btnAudio:hover {
+            background: #ff4fa3;
+            color: white;
+            transform: scale(1.1);
         }
         img {
             width: 120px;
@@ -44,6 +63,26 @@
             font-size: 14px;
             margin-bottom: 20px;
         }
+        .glow {
+            color: #fff;
+            text-shadow: 0 0 5px #ff4fa3, 0 0 10px #ff4fa3, 0 0 15px #ff4fa3, 0 0 20px #ff4fa3;
+        }
+        .grande {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        /* Animación de latido */
+        .latido {
+            animation: pulse 2s infinite alternate;
+        }
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 5px #ff4fa3, 0 0 10px #ff4fa3, 0 0 15px #ff4fa3, 0 0 20px #ff4fa3;
+            }
+            100% {
+                text-shadow: 0 0 10px #ff4fa3, 0 0 20px #ff4fa3, 0 0 30px #ff4fa3, 0 0 40px #ff4fa3;
+            }
+        }
         button {
             background: transparent;
             color: #ff4fa3;
@@ -51,9 +90,10 @@
             padding: 10px 20px;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 18px;
             box-shadow: 0 0 15px #ff4fa3;
             transition: transform 0.2s, background 0.3s;
+            margin: 5px;
         }
         button:hover {
             background: #ff4fa3;
@@ -84,31 +124,29 @@
     <div class="container">
         <h1>Feliz Día de la Novia</h1>
         <h2>1 de Agosto</h2>
+
+        <!-- Botón de audio justo debajo del texto -->
+        <button id="btnAudio" onclick="toggleAudio()">▶</button>
+
+        <!-- Imagen local -->
         <img src="imagen.png" alt="Ramo de rosas romántico">
-        <p>En este día especial, quiero que sepas...</p>
-        <p>Eres el amor que ilumina mi vida como el rosa en esta oscuridad.</p>
+
+        <p class="glow grande">En este día especial, quiero que sepas...</p>
+        <p class="glow latido">
+            Eres el amor que ilumina mi vida<br>
+            como el rosa en esta oscuridad.
+        </p>
+
         <button onclick="mostrarMensaje()">❤️ Haz clic, mi amor</button>
+
         <p id="mensajeFinal">
             Cada latido de mi corazón lleva tu nombre. Feliz 1 de agosto, mi vida. <br><br>
             ❤️ Roger y Daiana ❤️
         </p>
     </div>
 
-    <script>
-        function mostrarMensaje() {
-            document.getElementById("mensajeFinal").style.display = "block";
-        }
-        // Corazones animados
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-            heart.innerHTML = "❤️";
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
-        }
-        setInterval(createHeart, 300);
-    </script>
-</body>
-</html>
+    <!-- Música de fondo -->
+    <audio id="musica" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+    <
